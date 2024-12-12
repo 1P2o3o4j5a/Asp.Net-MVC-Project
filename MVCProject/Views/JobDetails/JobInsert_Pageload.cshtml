@@ -1,0 +1,76 @@
+﻿@model MVCProject.Models.JobInsertCls
+@{
+    ViewBag.Title = "JobInsert_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Job Details</h2>
+<div>
+    @using (Html.BeginForm("JobInsert_Click", "JobDetails", FormMethod.Post))
+    {
+        <div>
+            <label>Job Title:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobTitle)
+            @Html.ValidationMessageFor(m => m.jobTitle)
+        </div>
+        <div>
+            <label>Description::</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.jobDesp)
+            @Html.ValidationMessageFor(m => m.jobDesp)
+        </div>
+        <div>
+            <label>Skills Required:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.jobSkills)
+            @Html.ValidationMessageFor(m => m.jobSkills)
+        </div>
+        <div>
+            <label>Experience Required:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobExp)
+            @Html.ValidationMessageFor(m => m.jobExp)
+        </div>
+        <div>
+            <label>Salary Range:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobSalary)
+            @Html.ValidationMessageFor(m => m.jobSalary)
+        </div>
+        <div>
+            <label>Location:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobLoc)
+            @Html.ValidationMessageFor(m => m.jobLoc)
+        </div>
+        <div>
+            <label>Application last date:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobLastDate)
+            @Html.ValidationMessageFor(m => m.jobLastDate)
+        </div>
+        <div>
+            <label>Job Status:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobStatus)
+            @Html.ValidationMessageFor(m => m.jobStatus)
+        </div>
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.jobMsg)
+        </div>
+        <div>
+            @Html.ActionLink("Go to Login", "Login_Pageload", "Login")
+        </div>
+    }
+</div>
+

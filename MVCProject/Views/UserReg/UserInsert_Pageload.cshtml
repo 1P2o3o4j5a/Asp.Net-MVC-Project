@@ -1,0 +1,131 @@
+﻿@model MVCProject.Models.UserInsertCls
+@{
+    ViewBag.Title = "UserInsert_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registration Form</h2>
+<div>
+    @using (Html.BeginForm("UserInsert_Click", "UserReg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>Name:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.uName)
+            @Html.ValidationMessageFor(m => m.uName)
+        </div>
+        <div>
+            <label>Age:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.uAge)
+            @Html.ValidationMessageFor(m => m.uAge)
+        </div>
+        <div>
+            <label>Address:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.uAddress)
+            @Html.ValidationMessageFor(m => m.uAddress)
+        </div>
+        <div>
+            <label>Email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.uEmail)
+            @Html.ValidationMessageFor(m => m.uEmail)
+        </div>
+        <div>
+            <label>Contact Number:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.uPhone)
+            @Html.ValidationMessageFor(m => m.uPhone)
+        </div>
+        <div>
+            <label>Photo:</label>
+        </div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+        <div>
+            <label>Gender:</label>
+        </div>
+        <div>
+            Male
+            @Html.RadioButtonFor(m => m.uGender, "Male")
+            Female
+            @Html.RadioButtonFor(m => m.uGender, "Female")
+        </div>
+        <div>
+            <label>State:</label>
+        </div>
+        <div>
+            @Html.DropDownList("ddlstates", (SelectList)ViewBag.Selstates, "--Select--", new { @class = "form-control" })
+        </div>
+        <div>
+            <label>Qualification:</label>
+        </div>
+        <div>
+            @foreach (var item in Model.MyQualification)
+            {
+                <label>
+                    <input type="checkbox" value="@item.Value" checked="@item.IsChecked" name="selectedQual" id="@item.Value" />
+                    @Html.Raw(item.Text)
+                </label>
+            }
+        </div>
+        <div>
+            <label>Skills:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.uSkills)
+            @Html.ValidationMessageFor(m => m.uSkills)
+        </div>
+        <div>
+            <label>Experience:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.uExp)
+            @Html.ValidationMessageFor(m => m.uExp)
+        </div>
+        <div>
+            <label>Location:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.uLoc)
+            @Html.ValidationMessageFor(m => m.uLoc)
+        </div>
+        <div>
+            <label>Username:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.uUsername)
+            @Html.ValidationMessageFor(m => m.uUsername)
+        </div>
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.uPassword)
+            @Html.ValidationMessageFor(m => m.uPassword)
+        </div>
+        <div>
+            <label>Confirm Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.uConpassword)
+            @Html.ValidationMessageFor(m => m.uConpassword)
+        </div>
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.usermsg)
+        </div>
+        <div>
+            @Html.ActionLink("Go to Login", "Login_Pageload", "Login")
+        </div>
+    }
+</div>
+
+

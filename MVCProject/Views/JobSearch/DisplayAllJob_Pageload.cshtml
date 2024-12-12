@@ -1,0 +1,121 @@
+﻿@model MVCProject.Models.JobSearchCls
+@{
+    ViewBag.Title = "DisplayAllJob_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Job Details</h2>
+<div>
+    @using (Html.BeginForm("JobSearch_Click", "JobSearch", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td style="padding-left:8px;"><label>Skills:</label></td>
+                <td> @Html.TextBoxFor(m => m.insertse.jSkills)</td>
+                <td style="padding-left:8px;"><label>Experience:</label></td>
+                <td> @Html.TextBoxFor(m => m.insertse.jExp)</td>
+                <td style="padding-left:8px;"><label>Location:</label></td>
+                <td> @Html.TextBoxFor(m => m.insertse.jLoc)</td>
+                <td><input type="submit" value="Search" /></td>
+            </tr>
+        </table>          
+    }
+</div>
+
+<div>
+    @using (Html.BeginForm("DisplayAllJob_Pageload", "JobSearch", FormMethod.Get))
+    {
+        if(Model!=null)
+        {
+            if(Model.selectjob!=null&&Model.selectjob.Count!=0)
+                    {
+                        <table class="table">
+                            <tr>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label>Job Id</label>
+                                </th>
+                                <th>
+                                    <label>Company Id</label>
+                                </th>
+                                <th>
+                                    <label>Job Title</label>
+                                </th>
+                                <th>
+                                    <label>Description</label>
+                                </th>
+                                <th>
+                                    <label>Skills</label>
+                                </th>
+                                <th>
+                                    <label>Experience</label>
+                                </th>
+                                <th>
+                                    <label>Salary Range</label>
+                                </th>
+                                <th>
+                                    <label>Location</label>
+                                </th>
+                                <th>
+                                    <label>Last Date to Apply</label>
+                                </th>
+                                <th>
+                                    <label>Status</label>
+                                </th>
+                            </tr>
+                            @foreach(var item in Model.selectjob)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.jId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.cId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.jTitle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.jDesp)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.jSkills)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.jExp)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.jSalary)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.jLoc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.jLastDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.jStatus)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Apply Now","Apply_Pageload","Apply",
+                                    new {cid=item.cId,jid=item.jId},null)
+                                </td>
+                            </tr>
+                        }
+                        </table>
+            }
+            else
+                    {
+                        <script>
+                            alert('No data found');
+                        </script>
+                    }
+        }
+    }
+    <div>
+        @Html.ActionLink("Back to Home Page", "UserHome", "Login")
+    </div>
+</div>
+

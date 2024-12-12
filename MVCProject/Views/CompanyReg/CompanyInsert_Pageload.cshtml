@@ -1,0 +1,77 @@
+﻿@model MVCProject.Models.CompanyInsertCls
+@{
+    ViewBag.Title = "CompanyInsert_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Company Registration</h2>
+<div>
+    @using (Html.BeginForm("ComapnyInsert_Click", "CompanyReg", FormMethod.Post))
+    {
+        <div>
+            <label>Name:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.cName)
+            @Html.ValidationMessageFor(m => m.cName)
+        </div>
+        <div>
+            <label>Address:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.cAddress)
+            @Html.ValidationMessageFor(m => m.cAddress)
+        </div>
+        <div>
+            <label>Email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.cEmail)
+            @Html.ValidationMessageFor(m => m.cEmail)
+        </div>
+        <div>
+            <label>Website:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.cWebsite)
+            @Html.ValidationMessageFor(m => m.cWebsite)
+        </div>
+        <div>
+            <label>Contact Number:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.cPhone)
+            @Html.ValidationMessageFor(m => m.cPhone)
+        </div>
+
+        <div>
+            <label>Username:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.cUsername)
+            @Html.ValidationMessageFor(m => m.cUsername)
+        </div>
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.cPassword)
+            @Html.ValidationMessageFor(m => m.cPassword)
+        </div>
+        <div>
+            <label>Confirm Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.cConpassword)
+            @Html.ValidationMessageFor(m => m.cConpassword)
+        </div>
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.companymsg)
+        </div>
+        <div>
+            @Html.ActionLink("Go to Login", "Login_Pageload", "Login")
+        </div>
+    }
+</div>
+

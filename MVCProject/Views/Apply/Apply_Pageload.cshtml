@@ -1,0 +1,26 @@
+﻿@model MVCProject.Models.ApplyCls
+@{
+    ViewBag.Title = "Apply_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Application Form</h2>
+<div>
+    @using (Html.BeginForm("Apply_Click", "Apply", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>Upload Resume/CV:</label>
+        </div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+        <div>
+            <input type="submit" value="Upload" />
+            @Html.DisplayFor(m => m.Msg)
+        </div>
+        <div>
+            @Html.ActionLink("Back to Job Search", "UserHome", "Login")
+        </div>
+    }
+</div>
+
